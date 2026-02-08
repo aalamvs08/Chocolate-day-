@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Chocolate Day Gursanjh 🍫</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(#2b1055,#7597de);
+  color:white;
+  text-align:center;
+  overflow:hidden;
+}
+.page{
+  display:none;
+  height:100vh;
+  padding:25px;
+}
+.page.active{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  animation:fade 0.9s ease;
+}
+@keyframes fade{
+  from{opacity:0;transform:scale(0.92);}
+  to{opacity:1;transform:scale(1);}
+}
+h1{
+  font-size:28px;
+  text-shadow:0 0 15px #ff9ad5;
+}
+.glow{
+  font-size:32px;
+  animation:glow 2s infinite alternate;
+}
+@keyframes glow{
+  from{text-shadow:0 0 10px pink;}
+  to{text-shadow:0 0 25px hotpink;}
+}
+p{font-size:18px;max-width:90%;}
+button{
+  margin-top:20px;
+  padding:12px 28px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  background:#ff5fa2;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 0 15px rgba(255,95,162,0.6);
+}
+button:hover{transform:scale(1.08);}
+.heart{
+  position:absolute;
+  bottom:-20px;
+  font-size:20px;
+  animation:float 6s linear infinite;
+}
+@keyframes float{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(-120vh);opacity:0;}
+}
+.choco{
+  font-size:42px;
+  cursor:pointer;
+}
+#score{
+  font-size:22px;
+  margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2023/02/28/audio_6cddc06e5f.mp3" type="audio/mpeg">
+</audio>
+
+<div class="page active" id="p1">
+  <h1 class="glow">Happy Chocolate Day 🍫</h1>
+  <p>Hey baby… I made a tiny game only for you 💖<br>Ready?</p>
+  <button onclick="go(2)">Yes cutey 💕</button>
+</div>
+
+<div class="page" id="p2">
+  <h1>Question 1 💭</h1>
+  <p>Do you know someone smiles automatically when your name appears on screen? 😌</p>
+  <button onclick="go(3)">Maybe 😳</button>
+</div>
+
+<div class="page" id="p3">
+  <h1>Question 2 🍫</h1>
+  <p>If I give you unlimited chocolates… will you still choose hugs over chocolates, mera bachcha? 🥺</p>
+  <button onclick="go(4)">Yes 🫶</button>
+</div>
+
+<div class="page" id="p4">
+  <h1>Question 3 💓</h1>
+  <p>Who makes everything feel lighter just by existing? 🌸</p>
+  <button onclick="go(5)">Me? 🙈</button>
+</div>
+
+<div class="page" id="p5">
+  <h1>Question 4 🌷</h1>
+  <p>If someone is silent, tired, or broken… would you still stay without questions? 🤍</p>
+  <button onclick="go(6)">Always 🤞</button>
+</div>
+
+<div class="page" id="p6">
+  <h1>Question 5 🎀</h1>
+  <p>If I call you baby, darling, kuchu kuchu… will you smile a little extra? 😚</p>
+  <button onclick="go(7)">Already smiling 😭</button>
+</div>
+
+<div class="page" id="p7">
+  <h1>Mini Game 🎮🍫</h1>
+  <p>Tap the chocolate 5 times, cutey 💖</p>
+  <div class="choco" onclick="tap()">🍫</div>
+  <div id="score">Score: 0</div>
+</div>
+
+<div class="page" id="p8">
+  <h1>Question 6 🌙</h1>
+  <p>Do you know you are someone’s answered prayer? 🤍</p>
+  <button onclick="go(9)">Whose? 🥺</button>
+</div>
+
+<div class="page" id="p9">
+  <h1>Question 7 💌</h1>
+  <p>Will you promise to stay this soft, kind soul forever? 🌸</p>
+  <button onclick="go(10)">Promise 🤞</button>
+</div>
+
+<div class="page" id="p10">
+  <h1 class="glow">For You, Gursanjh 🍫</h1>
+  <p>
+    This wasn’t just a game.<br><br>
+    It was time, effort, and feelings.<br>
+    Something made slowly… thinking of you.<br><br>
+    If your heart felt warm even once,<br>
+    then this meant everything it was supposed to. 🤍
+  </p>
+  <p style="margin-top:20px;">— Made with care by Aalam 🤍</p>
+</div>
+
+<script>
+function go(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('p'+n).classList.add('active');
+}
+
+let score=0;
+function tap(){
+  score++;
+  document.getElementById('score').innerText="Score: "+score;
+  if(score>=5){
+    go(8);
+  }
+}
+
+setInterval(()=>{
+  let h=document.createElement('div');
+  h.className='heart';
+  h.innerHTML='💖';
+  h.style.left=Math.random()*100+'vw';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},700);
+</script>
+
+</body>
+</html>
